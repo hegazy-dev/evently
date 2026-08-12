@@ -1,5 +1,6 @@
 import 'package:evently/app_theme.dart';
 import 'package:evently/home_screen.dart';
+import 'package:evently/screens/create_event_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,10 @@ class EventlyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {HomeScreen.routeName: (_) => HomeScreen()},
+      routes: {
+        HomeScreen.routeName: (_) => HomeScreen(),
+        CreateEventScreen.routeName: (_) => CreateEventScreen(),
+      },
       initialRoute: HomeScreen.routeName,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

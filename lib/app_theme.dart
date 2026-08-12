@@ -23,6 +23,11 @@ class AppTheme {
       selectedItemColor: primaryLight,
       unselectedItemColor: grey,
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primaryLight,
+      foregroundColor: white,
+      shape: CircleBorder()
+    )
   );
 
   static ThemeData darkTheme = ThemeData();
