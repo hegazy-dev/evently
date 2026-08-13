@@ -6,6 +6,7 @@ class AppTheme {
   static const Color backgroundLight = Color(0xFFF4F7FF);
   static const Color backgroundDark = Color(0xFF001440);
   static const Color white = Color(0xFFFFFFFF);
+  static const Color offWhite = Color(0xFFF0F0F0);
   static const Color grey = Color(0xFFB9B9B9);
   static const Color darkGrey = Color(0xFF686868);
   static const Color black = Color(0xFF1C1C1C);
@@ -27,6 +28,11 @@ class AppTheme {
       backgroundColor: primaryLight,
       foregroundColor: white,
       shape: CircleBorder()
+    ),
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(fontSize: 20, fontWeight: .w500),
+      titleMedium: TextStyle(fontSize: 16, fontWeight: .w500),
+      titleSmall: TextStyle(fontSize: 14, fontWeight: .w400),
     )
   );
 
