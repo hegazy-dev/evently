@@ -13,6 +13,7 @@ class AppTheme {
   static const Color red = Color(0xFFFF3232);
 
   static ThemeData lightTheme = ThemeData(
+    primaryColor: primaryLight,
     scaffoldBackgroundColor: backgroundLight,
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(fontSize: 18, fontWeight: .w500, color: black),
@@ -27,13 +28,13 @@ class AppTheme {
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: primaryLight,
       foregroundColor: white,
-      shape: CircleBorder()
+      shape: CircleBorder(),
     ),
     textTheme: TextTheme(
       headlineSmall: TextStyle(fontSize: 20, fontWeight: .w500),
       titleMedium: TextStyle(fontSize: 16, fontWeight: .w500),
       titleSmall: TextStyle(fontSize: 14, fontWeight: .w400),
-    )
+    ),
   );
 
   static ThemeData darkTheme = ThemeData();
