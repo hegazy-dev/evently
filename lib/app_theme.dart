@@ -35,6 +35,15 @@ class AppTheme {
       titleMedium: TextStyle(fontSize: 16, fontWeight: .w500),
       titleSmall: TextStyle(fontSize: 14, fontWeight: .w400),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: white,
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: offWhite),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      hintStyle: TextStyle(fontSize: 14, color: darkGrey, fontWeight: .w400),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData();
