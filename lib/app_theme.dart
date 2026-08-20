@@ -32,6 +32,11 @@ class AppTheme {
       shape: CircleBorder(),
     ),
     textTheme: TextTheme(
+      headlineMedium: TextStyle(
+        fontSize: 24,
+        fontWeight: .w600,
+        color: primaryLight,
+      ),
       headlineSmall: TextStyle(fontSize: 20, fontWeight: .w500),
       titleMedium: TextStyle(fontSize: 16, fontWeight: .w500),
       titleSmall: TextStyle(fontSize: 14, fontWeight: .w400),
@@ -40,6 +45,18 @@ class AppTheme {
       filled: true,
       fillColor: white,
       enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: offWhite),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: offWhite),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: offWhite),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: offWhite),
         borderRadius: BorderRadius.circular(16),
       ),
@@ -52,6 +69,24 @@ class AppTheme {
         side: BorderSide(color: offWhite),
       ),
       titleTextStyle: TextStyle(fontSize: 16, fontWeight: .w500, color: black),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: primaryLight,
+        textStyle: TextStyle(
+          fontSize: 14,
+          fontWeight: .bold,
+          decoration: .underline,
+        ),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: primaryLight,
+        foregroundColor: white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        textStyle: TextStyle(fontSize: 20, fontWeight: .w500),
+      ),
     ),
   );
 
