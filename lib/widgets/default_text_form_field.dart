@@ -9,6 +9,7 @@ class DefaultTextFormField extends StatefulWidget {
   String? suffixIconImageName;
   void Function(String)? onChange;
   bool isPassword;
+  String? Function(String?)? validator;
 
   DefaultTextFormField({
     required this.hintText,
@@ -17,6 +18,7 @@ class DefaultTextFormField extends StatefulWidget {
     this.suffixIconImageName,
     this.onChange,
     this.isPassword = false,
+    this.validator,
   });
 
   @override
@@ -64,6 +66,9 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
       controller: widget.controller,
       onChanged: widget.onChange,
       obscureText: isObscure,
+      validator: widget.validator,
+      autovalidateMode: .onUserInteraction,
+      onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
     );
   }
 }

@@ -1,18 +1,19 @@
-import 'package:evently/screens/register_screen.dart';
+import 'package:evently/screens/login_screen.dart';
 import 'package:evently/widgets/default_elevated_button.dart';
 import 'package:evently/widgets/default_text_form_field.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String routeName = '/login';
+class RegisterScreen extends StatefulWidget {
+  static const String routeName = '/register';
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -36,8 +37,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Spacer(),
-                Text('Login to your account', style: textTheme.headlineMedium),
+                Text('Create your account', style: textTheme.headlineMedium),
                 SizedBox(height: 24),
+                DefaultTextFormField(
+                  hintText: 'Enter your name',
+                  prefixIconImageName: 'name',
+                  controller: nameController,
+                  validator: (value) {
+                    if (value == null || value.length < 2) {
+                      return 'Inavalid name';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 16),
                 DefaultTextFormField(
                   hintText: 'Enter your email',
                   prefixIconImageName: 'email',
@@ -57,25 +70,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   isPassword: true,
                   validator: (value) {
                     if (value == null || value.length < 8) {
-                      return 'Inavalid email';
+                      return 'Inavalid password';
                     }
                     return null;
                   },
                 ),
                 Spacer(flex: 1),
-                DefaultElevatedButton(label: 'Login', onPressed: login),
+                DefaultElevatedButton(label: 'Register', onPressed: register),
                 SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: .center,
                   children: [
-                    Text('Don’t have an account?', style: textTheme.titleSmall),
+                    Text(
+                      'Already have an account?',
+                      style: textTheme.titleSmall,
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.of(
                           context,
-                        ).pushReplacementNamed(RegisterScreen.routeName);
+                        ).pushReplacementNamed(LoginScreen.routeName);
                       },
-                      child: Text('Register'),
+                      child: Text('Login'),
                     ),
                   ],
                 ),
@@ -88,9 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void login() {
+  void register() {
     if (formKey.currentState!.validate()) {
-      //login logic
+      //register logic
     }
   }
 }

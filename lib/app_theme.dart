@@ -53,11 +53,11 @@ class AppTheme {
         borderRadius: BorderRadius.circular(16),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: offWhite),
+        borderSide: BorderSide(color: red),
         borderRadius: BorderRadius.circular(16),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: offWhite),
+        borderSide: BorderSide(color: red),
         borderRadius: BorderRadius.circular(16),
       ),
       hintStyle: TextStyle(fontSize: 14, color: darkGrey, fontWeight: .w400),
