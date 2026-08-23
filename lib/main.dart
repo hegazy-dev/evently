@@ -1,15 +1,22 @@
 import 'package:evently/app_theme.dart';
 import 'package:evently/home_screen.dart';
+import 'package:evently/providers/events_provider.dart';
 import 'package:evently/screens/create_event_screen.dart';
 import 'package:evently/screens/login_screen.dart';
 import 'package:evently/screens/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(EventlyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => EventsProvider()..getEvents(),
+      child: EventlyApp(),
+    ),
+  );
 }
 
 class EventlyApp extends StatelessWidget {
