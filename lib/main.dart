@@ -13,7 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(
     ChangeNotifierProvider(
-      create: (_) => EventsProvider()..getEvents(),
+      create: (_) => EventsProvider()..getAllEvents(),
       child: EventlyApp(),
     ),
   );

@@ -17,8 +17,8 @@ class HomeTab extends StatelessWidget {
         Expanded(
           child: ListView.separated(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            itemBuilder: (_, index) => EventItem(eventsProvider.events[index]),
-            itemCount: eventsProvider.events.length,
+            itemBuilder: (_, index) => EventItem(eventsProvider.displayedEvents[index]),
+            itemCount: eventsProvider.displayedEvents.length,
             separatorBuilder: (_, _) => SizedBox(height: 16),
           ),
         ),
