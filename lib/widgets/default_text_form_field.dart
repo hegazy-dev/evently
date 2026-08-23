@@ -10,6 +10,7 @@ class DefaultTextFormField extends StatefulWidget {
   void Function(String)? onChange;
   bool isPassword;
   String? Function(String?)? validator;
+  int maxLines;
 
   DefaultTextFormField({
     required this.hintText,
@@ -19,6 +20,7 @@ class DefaultTextFormField extends StatefulWidget {
     this.onChange,
     this.isPassword = false,
     this.validator,
+    this.maxLines = 1,
   });
 
   @override
@@ -67,6 +69,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
       onChanged: widget.onChange,
       obscureText: isObscure,
       validator: widget.validator,
+      maxLines: widget.maxLines,
       autovalidateMode: .onUserInteraction,
       onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
     );
