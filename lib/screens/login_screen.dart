@@ -1,6 +1,10 @@
+import 'package:evently/home_screen.dart';
 import 'package:evently/screens/register_screen.dart';
+import 'package:evently/ui_utils.dart';
 import 'package:evently/widgets/default_elevated_button.dart';
 import 'package:evently/widgets/default_text_form_field.dart';
+import 'package:evently/widgets/firebase_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -90,7 +94,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void login() {
     if (formKey.currentState!.validate()) {
-      //login logic
+      FirebaseService.login(
+            email: emailController.text,
+            password: passwordController.text,
+          )
+          .then((user) {
+            Navigator.of(context).pushNamed(HomeScreen.routeName);
+          })
+          .catchError((error) {
+            String? errorMessage;
+            if (error is FirebaseAuthException) {
+              errorMessage = error.message;
+            }
+            UiUtils.showErrorMessage(errorMessage);
+          });
     }
   }
 }
