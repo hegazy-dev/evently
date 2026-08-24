@@ -1,11 +1,15 @@
 import 'package:evently/app_theme.dart';
 import 'package:evently/models/language_model.dart';
+import 'package:evently/models/user_model.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    UserModel user = Provider.of<UserProvider>(context).currentUser!;
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return Padding(
@@ -18,11 +22,11 @@ class ProfileTab extends StatelessWidget {
           ),
           SizedBox(height: 16),
           Text(
-            'Mahmoud Hegazy',
+            user.name,
             style: textTheme.headlineSmall?.copyWith(fontWeight: .w600),
           ),
           SizedBox(height: 4),
-          Text('hegazy.personal@gmail.com', style: textTheme.titleSmall),
+          Text(user.email, style: textTheme.titleSmall),
           SizedBox(height: 32),
           SwitchListTile(
             title: Text('Dark Mode'),

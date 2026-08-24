@@ -1,6 +1,7 @@
 import 'package:evently/app_theme.dart';
 import 'package:evently/home_screen.dart';
 import 'package:evently/providers/events_provider.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:evently/screens/create_event_screen.dart';
 import 'package:evently/screens/login_screen.dart';
 import 'package:evently/screens/register_screen.dart';
@@ -12,8 +13,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => EventsProvider()..getAllEvents(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => EventsProvider()..getAllEvents()),
+      ],
       child: EventlyApp(),
     ),
   );

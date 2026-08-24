@@ -1,5 +1,7 @@
 import 'package:evently/models/category_model.dart';
+import 'package:evently/models/user_model.dart';
 import 'package:evently/providers/events_provider.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:evently/tabs/home/tab_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,7 @@ class _HomeHeaderState extends State<HomeHeader> {
 
   @override
   Widget build(BuildContext context) {
+    UserModel user = Provider.of<UserProvider>(context).currentUser!;
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return Padding(
@@ -24,7 +27,7 @@ class _HomeHeaderState extends State<HomeHeader> {
         children: [
           Text('Welcome Back ✨', style: textTheme.titleSmall),
           SizedBox(height: 4),
-          Text('Mahmoud Hegazy', style: textTheme.headlineSmall),
+          Text(user.name, style: textTheme.headlineSmall),
           DefaultTabController(
             length: CategoryModel.categories.length + 1,
             child: TabBar(
