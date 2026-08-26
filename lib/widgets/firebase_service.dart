@@ -51,6 +51,7 @@ class FirebaseService {
       id: credential.user!.uid,
       name: name,
       email: email,
+      favoriteEventsIds: [],
     );
     await usersCollection.doc(user.id).set(user);
     return user;
@@ -68,5 +69,25 @@ class FirebaseService {
         .doc(credential.user!.uid)
         .get();
     return docSnapshot.data()!;
+  }
+
+  static Future<void> addEventToFavorites(String eventId) async {
+    CollectionReference<UserModel> usersCollection = getUsersCollection();
+    DocumentReference<UserModel> userDoc = await usersCollection.doc(
+      FirebaseAuth.instance.currentUser!.uid,
+    );
+    return userDoc.update({
+      'favoriteEventsIds': FieldValue.arrayUnion([eventId]),
+    });
+  }
+
+  static Future<void> removeEventFromFavorites(String eventId) async {
+    CollectionReference<UserModel> usersCollection = getUsersCollection();
+    DocumentReference<UserModel> userDoc = await usersCollection.doc(
+      FirebaseAuth.instance.currentUser!.uid,
+    );
+    return userDoc.update({
+      'favoriteEventsIds': FieldValue.arrayRemove([eventId]),
+    });
   }
 }
