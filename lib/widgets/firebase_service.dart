@@ -38,6 +38,8 @@ class FirebaseService {
     return querySnapshot.docs.map((docSnapshot) => docSnapshot.data()).toList();
   }
 
+  static Future<void> logout() => FirebaseAuth.instance.signOut();
+
   static Future<UserModel> register({
     required String name,
     required String email,

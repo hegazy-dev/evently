@@ -16,7 +16,7 @@ class UserModel {
         id: json['id'],
         name: json['name'],
         email: json['email'],
-        favoriteEventsIds: json['favoriteEventsIds'],
+        favoriteEventsIds: (json['favoriteEventsIds'] as List).cast<String>(),
       );
 
   Map<String, dynamic> toJson() => {
