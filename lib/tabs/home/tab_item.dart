@@ -1,5 +1,7 @@
 import 'package:evently/app_theme.dart';
+import 'package:evently/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TabItem extends StatelessWidget {
   String label;
@@ -10,14 +12,21 @@ class TabItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Provider.of<SettingsProvider>(context).isDark;
     Color primaryColor = Theme.of(context).primaryColor;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: .circular(16),
-        color: isSelected ? primaryColor : AppTheme.white,
-        border: Border.all(color: AppTheme.offWhite),
+        color: isSelected
+            ? primaryColor
+            : (isDark ? AppTheme.navy : AppTheme.white),
+        border: Border.all(
+          color: isSelected
+              ? (isDark ? Colors.tealAccent : AppTheme.offWhite)
+              : (isDark ? AppTheme.borderDark : AppTheme.offWhite),
+        ),
       ),
       child: Row(
         children: [
@@ -26,7 +35,9 @@ class TabItem extends StatelessWidget {
           Text(
             label,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: isSelected ? AppTheme.white : AppTheme.black,
+              color: isSelected
+                  ? AppTheme.white
+                  : (isDark ? AppTheme.white : AppTheme.black),
             ),
           ),
         ],

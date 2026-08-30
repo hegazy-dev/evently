@@ -1,6 +1,7 @@
 import 'package:evently/app_theme.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:evently/providers/events_provider.dart';
+import 'package:evently/providers/settings_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class EventItem extends StatelessWidget {
   Widget build(BuildContext context) {
     UserProvider userProvider = Provider.of<UserProvider>(context);
     bool isFavorite = userProvider.checkIsEventFavorite(event.id);
+    bool isDark = Provider.of<SettingsProvider>(context).isDark;
     Size screenSize = MediaQuery.sizeOf(context);
     TextTheme textTheme = Theme.of(context).textTheme;
     Color primaryColor = Theme.of(context).primaryColor;
@@ -35,8 +37,10 @@ class EventItem extends StatelessWidget {
           margin: EdgeInsets.all(8),
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: AppTheme.backgroundLight,
-            border: Border.all(color: AppTheme.offWhite),
+            color: isDark ? AppTheme.backgroundDark : AppTheme.backgroundLight,
+            border: Border.all(
+              color: isDark ? AppTheme.borderDark : AppTheme.offWhite,
+            ),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
@@ -54,8 +58,12 @@ class EventItem extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: AppTheme.backgroundLight,
-              border: Border.all(color: AppTheme.offWhite),
+              color: isDark
+                  ? AppTheme.backgroundDark
+                  : AppTheme.backgroundLight,
+              border: Border.all(
+                color: isDark ? AppTheme.borderDark : AppTheme.offWhite,
+              ),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -64,7 +72,10 @@ class EventItem extends StatelessWidget {
                 Expanded(
                   child: Text(
                     event.title,
-                    style: textTheme.titleSmall?.copyWith(fontWeight: .w500),
+                    style: textTheme.titleSmall?.copyWith(
+                      fontWeight: .w500,
+                      color: isDark ? AppTheme.white : AppTheme.black,
+                    ),
                     maxLines: 2,
                     overflow: .ellipsis,
                   ),

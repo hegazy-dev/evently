@@ -1,6 +1,7 @@
 import 'package:evently/models/category_model.dart';
 import 'package:evently/models/user_model.dart';
 import 'package:evently/providers/events_provider.dart';
+import 'package:evently/providers/settings_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/tabs/home/tab_item.dart';
 import 'package:flutter/foundation.dart';

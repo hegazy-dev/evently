@@ -1,6 +1,7 @@
 import 'package:evently/app_theme.dart';
 import 'package:evently/models/language_model.dart';
 import 'package:evently/models/user_model.dart';
+import 'package:evently/providers/settings_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/screens/login_screen.dart';
 import 'package:evently/widgets/firebase_service.dart';
@@ -12,6 +13,7 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserModel user = Provider.of<UserProvider>(context).currentUser!;
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return Padding(
@@ -32,10 +34,16 @@ class ProfileTab extends StatelessWidget {
           SizedBox(height: 32),
           SwitchListTile(
             title: Text('Dark Mode'),
-            value: false,
-            onChanged: (value) {},
+            value: settingsProvider.isDark,
+            onChanged: (isDark) {
+              settingsProvider.changeTheme(isDark ? .dark : .light);
+            },
             thumbColor: WidgetStatePropertyAll(AppTheme.white),
-            trackColor: WidgetStatePropertyAll(AppTheme.lightGrey),
+            trackColor: WidgetStatePropertyAll(
+              settingsProvider.isDark
+                  ? AppTheme.primaryDark
+                  : AppTheme.lightGrey,
+            ),
             trackOutlineColor: WidgetStatePropertyAll(Colors.transparent),
           ),
           SizedBox(height: 16),
