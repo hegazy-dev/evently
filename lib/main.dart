@@ -1,5 +1,6 @@
 import 'package:evently/app_theme.dart';
 import 'package:evently/home_screen.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/settings_provider.dart';
 import 'package:evently/providers/user_provider.dart';
@@ -42,6 +43,9 @@ class EventlyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: settingsProvider.themeMode,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(settingsProvider.languageCode),
     );
   }
 }

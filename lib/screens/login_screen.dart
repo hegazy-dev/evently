@@ -1,4 +1,5 @@
 import 'package:evently/home_screen.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/screens/register_screen.dart';
 import 'package:evently/ui_utils.dart';
@@ -69,7 +70,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 Spacer(flex: 1),
-                DefaultElevatedButton(label: 'Login', onPressed: login),
+                DefaultElevatedButton(
+                  label: AppLocalizations.of(context)!.login,
+                  onPressed: login,
+                ),
                 SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: .center,
@@ -81,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context,
                         ).pushReplacementNamed(RegisterScreen.routeName);
                       },
-                      child: Text('Register'),
+                      child: Text(AppLocalizations.of(context)!.register),
                     ),
                   ],
                 ),
